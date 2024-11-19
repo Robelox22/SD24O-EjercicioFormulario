@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI, Form, File, UploadFile
 from typing import Optional
 from pydantic import BaseModel
 import shutil
@@ -160,5 +160,8 @@ async def registrar_usuario(nombre: str = Form(...),direccion: str = Form(...),v
         "vip": vip,
         "ruta_foto": ruta_foto
     }
-    
-    return respuesta
+
+# Para iniciar el servidor
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
